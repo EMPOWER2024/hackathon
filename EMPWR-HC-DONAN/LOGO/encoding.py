@@ -44,7 +44,7 @@ def main():
     tile_encoder, slide_encoder_model = load_tile_slide_encoder(global_pool=True)
 
     for wsi in TILE_PATH:
-        image_paths = [os.path.join(wsi, img) for img in os.listdir(wsi) if img.endswith('.png')]
+        image_paths = [os.path.join(TILE_PATH+'/'+wsi, img) for img in os.listdir(wsi) if img.endswith('.png')]
         print(f"Found {len(image_paths)} image tiles")
 
         tile_encoder_outputs = run_inference_with_tile_encoder(image_paths, tile_encoder)
