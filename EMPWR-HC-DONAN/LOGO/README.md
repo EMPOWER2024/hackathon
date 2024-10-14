@@ -21,7 +21,7 @@ Step 2:
 
     python -u tiling.py --wsi_path "$wsi_path" --save_dir "$save_dir" --tile_size "$tile_size" --resize_factor "$resize_factor"
 
-  Where the $wsi_path refers to a folder with all .tif WSIs, $save_dir refers to the folder where all the tiles will be saved, $tile_size is the tile size, and $resize_factor is the resize factor.
+  Where the $wsi_path refers to a folder with all .tif WSIs, $save_dir refers to the folder where all the tiles will be saved. For $tile_size and $resize_factor, use the default parameters (checked with Erick).
 
 
 Step 3:
