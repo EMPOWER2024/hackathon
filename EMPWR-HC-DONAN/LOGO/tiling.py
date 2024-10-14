@@ -44,7 +44,7 @@ def main():
     store_path = args.save_dir
     TILE_SIZE = 256
 
-    if not os.path.exists(WSI_DIR):
+    if not os.path.exists(WSI_PATH):
         print("WSI folder does not exist, script should be stopped now")
     else:
         if not os.path.exists(SAVE_DIR):
