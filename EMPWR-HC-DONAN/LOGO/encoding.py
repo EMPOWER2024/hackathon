@@ -57,7 +57,7 @@ def main():
 
         for key in slide_embeds.keys():
             vector = np.asarray(slide_embeds[key])
-            np.save(vector,SAVE_DIR+'/'+wsi+'_'+key+'.npy')
+            np.save(vector,SAVE_DIR+wsi+'_'+key+'.npy')
             
 
 if __name__ == "__main__":
