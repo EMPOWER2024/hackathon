@@ -57,7 +57,7 @@ def main():
 
 
     for wsi in sorted(os.listdir(WSI_PATH)):
-        vips_img = Vips.Image.new_from_file(WSI_PATH, level=0)
+        vips_img = Vips.Image.new_from_file(wsi, level=0)
         if args.resize_factor != 1:
             vips_img = vips_img.resize(args.resize_factor)
     
