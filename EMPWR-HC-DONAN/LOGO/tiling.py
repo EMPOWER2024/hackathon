@@ -61,7 +61,7 @@ def main():
         if args.resize_factor != 1:
             vips_img = vips_img.resize(args.resize_factor)
     
-        save_and_tile(vips_img, WSI_PATH.split('.')[0], SAVE_DIR, tile_size = TILE_SIZE)
+        save_and_tile(vips_img, wsi.split('.')[0], SAVE_DIR, tile_size = TILE_SIZE)
     
     
     for case_folder in sorted(os.listdir(SAVE_DIR)):
