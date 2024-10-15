@@ -31,7 +31,7 @@ def main():
         print('Processing NAID: ', NAID)
         if NAID in ['DON014_T_I-2','DON022_T_I-9','DON092_T_V-6','DON104_T_I-6','DON109_T_I-6']:
           try:
-              os.makedirs(store_path+NAID+'/images/')
+              os.makedirs(TILE_PATH+NAID+'/images/')
           except:
               pass
           for tile_folder in sorted(os.listdir('temp_tiles/'+NAID+'/0/')):
