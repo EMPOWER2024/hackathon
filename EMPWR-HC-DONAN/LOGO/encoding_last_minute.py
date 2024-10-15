@@ -10,10 +10,9 @@ def main():
     parser = argparse.ArgumentParser(description="Preprocess parameters.")
 
     # Define arguments with their default values
-    parser.add_argument("--tile_path", type=str, default='data/', help="Path to tile folder")
+    parser.add_argument("--tile_path", type=str, default='temp_out/', help="Path to tile folder")
     parser.add_argument("--save_dir", type=str, default='proper_tiles/', help="Path to save WSI-level vectors")
     parser.add_argument("--hf_token", type=str, default='secret', help="Huggingface token")
-    parser.add_argument("--store_path", type=str, default='temp_out/', help="Huggingface token")
 
     # Parse the arguments
     args = parser.parse_args()
@@ -44,7 +43,7 @@ def main():
                   x0 = int(tile_file.split('.')[0])*TILE_SIZE
                   x1 = (int(tile_file.split('.')[0])+1)*TILE_SIZE
                   shutil.copy('temp_tiles/'+NAID+'/0/'+str(tile_folder)+'/'+tile_file, 
-                            args.store_path+NAID+'/images/'+str(x0)+'x_'+str(y0)+'y.png')
+                            TILE_PATH+NAID+'/images/'+str(x0)+'x_'+str(y0)+'y.png')
 
     if not os.path.exists(TILE_PATH):
         print("Tile folder does not exist, script should be stopped now")
