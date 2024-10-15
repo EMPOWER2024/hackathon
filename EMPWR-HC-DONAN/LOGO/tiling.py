@@ -57,9 +57,11 @@ def main():
 
 
     for wsi in sorted(os.listdir(WSI_PATH)):
-        vips_img = Vips.Image.new_from_file(WSI_PATH+wsi)
-        if args.resize_factor != 1:
-            vips_img = vips_img.resize(args.resize_factor)
+        NAID = wsi.split('.')[0]
+        if NAID not in ['DON014_T_I-2','DON022_T_I-9','DON092_T_V-6','DON104_T_I-6','DON109_T_I-6']:
+            vips_img = Vips.Image.new_from_file(WSI_PATH+wsi)
+            if args.resize_factor != 1:
+                vips_img = vips_img.resize(args.resize_factor)
     
         save_and_tile(vips_img, wsi.split('.')[0], SAVE_DIR, tile_size = TILE_SIZE)
     
@@ -67,20 +69,21 @@ def main():
     for case_folder in sorted(os.listdir(SAVE_DIR)):
         NAID = case_folder
         print('Processing NAID: ', NAID)
-        try:
-            os.makedirs(store_path+NAID+'/images/')
-        except:
-            pass
-        for tile_folder in sorted(os.listdir(SAVE_DIR+NAID+'/0/')):
-            # folder_level == y axis distance determinant
-            # file_level == x axis distance determinant
-            y0 = int(tile_folder)*TILE_SIZE
-            y1 = (int(tile_folder)+1)*TILE_SIZE
-            for tile_file in sorted(os.listdir(SAVE_DIR+NAID+'/0/'+tile_folder+'/')):
-                x0 = int(tile_file.split('.')[0])*TILE_SIZE
-                x1 = (int(tile_file.split('.')[0])+1)*TILE_SIZE
-                shutil.copy(SAVE_DIR+NAID+'/0/'+str(tile_folder)+'/'+tile_file, 
-                          store_path+NAID+'/images/'+str(x0)+'x_'+str(y0)+'y.png')
+        if NAID not in ['DON014_T_I-2','DON022_T_I-9','DON092_T_V-6','DON104_T_I-6','DON109_T_I-6']:
+            try:
+                os.makedirs(store_path+NAID+'/images/')
+            except:
+                pass
+            for tile_folder in sorted(os.listdir(SAVE_DIR+NAID+'/0/')):
+                # folder_level == y axis distance determinant
+                # file_level == x axis distance determinant
+                y0 = int(tile_folder)*TILE_SIZE
+                y1 = (int(tile_folder)+1)*TILE_SIZE
+                for tile_file in sorted(os.listdir(SAVE_DIR+NAID+'/0/'+tile_folder+'/')):
+                    x0 = int(tile_file.split('.')[0])*TILE_SIZE
+                    x1 = (int(tile_file.split('.')[0])+1)*TILE_SIZE
+                    shutil.copy(SAVE_DIR+NAID+'/0/'+str(tile_folder)+'/'+tile_file, 
+                              store_path+NAID+'/images/'+str(x0)+'x_'+str(y0)+'y.png')
 
 
     print("Deleting temporary folder")
