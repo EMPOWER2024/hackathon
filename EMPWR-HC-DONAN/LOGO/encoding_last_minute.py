@@ -11,7 +11,7 @@ def main():
 
     # Define arguments with their default values
     parser.add_argument("--tile_path", type=str, default='temp_out/', help="Path to tile folder")
-    parser.add_argument("--save_dir", type=str, default='proper_tiles/', help="Path to save WSI-level vectors")
+    parser.add_argument("--save_dir", type=str, default='proper_vectors/', help="Path to save WSI-level vectors")
     parser.add_argument("--hf_token", type=str, default='secret', help="Huggingface token")
 
     # Parse the arguments
