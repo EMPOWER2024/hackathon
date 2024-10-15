@@ -35,15 +35,15 @@ def main():
               os.makedirs(store_path+NAID+'/images/')
           except:
               pass
-          for tile_folder in sorted(os.listdir(SAVE_DIR+NAID+'/0/')):
+          for tile_folder in sorted(os.listdir('temp_tiles/'+NAID+'/0/')):
               # folder_level == y axis distance determinant
               # file_level == x axis distance determinant
               y0 = int(tile_folder)*TILE_SIZE
               y1 = (int(tile_folder)+1)*TILE_SIZE
-              for tile_file in sorted(os.listdir(SAVE_DIR+NAID+'/0/'+tile_folder+'/')):
+              for tile_file in sorted(os.listdir('temp_tiles/'+NAID+'/0/'+tile_folder+'/')):
                   x0 = int(tile_file.split('.')[0])*TILE_SIZE
                   x1 = (int(tile_file.split('.')[0])+1)*TILE_SIZE
-                  shutil.copy(SAVE_DIR+NAID+'/0/'+str(tile_folder)+'/'+tile_file, 
+                  shutil.copy('temp_tiles/'+NAID+'/0/'+str(tile_folder)+'/'+tile_file, 
                             args.store_path+NAID+'/images/'+str(x0)+'x_'+str(y0)+'y.png')
 
     if not os.path.exists(TILE_PATH):
