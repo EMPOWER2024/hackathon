@@ -1,6 +1,6 @@
 import os
 import argparse
-import timm
+#import timm
 from gigapath.pipeline import load_tile_slide_encoder
 from gigapath.pipeline import run_inference_with_tile_encoder
 from gigapath.pipeline import run_inference_with_slide_encoder
@@ -59,7 +59,7 @@ def main():
     assert "HF_TOKEN" in os.environ, "Please set the HF_TOKEN environment variable to your Hugging Face API token"
 
 
-    model = timm.create_model("hf_hub:prov-gigapath/prov-gigapath", pretrained=True)
+    #model = timm.create_model("hf_hub:prov-gigapath/prov-gigapath", pretrained=True)
 
     tile_encoder, slide_encoder_model = load_tile_slide_encoder(global_pool=True)
 
